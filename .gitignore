@@ -1,0 +1,5 @@
+.idea/
+target/
+zinc-cache/
+.bsp/
+output/

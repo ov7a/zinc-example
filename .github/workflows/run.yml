@@ -1,0 +1,24 @@
+name: Run test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ZINC_VERSION: 1.10.4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Run in the same JVM
+        run: sbt "run both"
+
+      - name: Run in different VMs
+        run: sbt "run first" && sbt "run second"
